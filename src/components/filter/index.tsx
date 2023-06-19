@@ -1,9 +1,10 @@
 import { changeFilter } from '../../redux/reducers/todoListSlice.js';
 import { useDispatch } from 'react-redux';
 import styles from './filter.module.scss';
+import { AppDispatch } from '../../redux/store.js';
 
-const Filter = () => {
-  const dispatch = useDispatch();
+const Filter = (): JSX.Element => {
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleFilter = () => {
     dispatch(changeFilter());

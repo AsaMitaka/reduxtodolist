@@ -4,6 +4,7 @@
   margin: 20px 0;
   display: flex;
   justify-content: center;
+  align-items: center;
   list-style-type: none;
 
   .todoinput {
@@ -11,7 +12,7 @@
     padding: 0px 20px;
     font-size: 24px;
     background-color: transparent;
-    border: 1px transparent;
+    border: 3px transparent;
     border-radius: 10px;
     cursor: pointer;
 
@@ -22,7 +23,9 @@
   }
 
   .todocheckbox {
-    font-size: 20px;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
   }
 
   .todobtn {

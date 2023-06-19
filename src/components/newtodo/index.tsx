@@ -1,13 +1,15 @@
 import styles from './newtodo.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeName } from '../../redux/reducers/todoSlice.js';
+import { changeName, changeId, Todo } from '../../redux/reducers/todoSlice.js';
 import { addTodo } from '../../redux/reducers/todoListSlice.js';
+import { AppDispatch } from '../../redux/store.js';
 
-const Newtodo = () => {
-  const todoName = useSelector((state) => state.todo.name);
-  const dispatch = useDispatch();
+const Newtodo = (): JSX.Element => {
+  const dispatch = useDispatch<AppDispatch>();
+  const todoName = useSelector((state: Todo) => state.todo.name);
+  const newTodo = useSelector((state: Todo) => state.todo);
 
-  const handleNameChange = (event) => {
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newName = event.target.value;
     dispatch(changeName({ name: newName }));
   };
@@ -17,14 +19,11 @@ const Newtodo = () => {
       return;
     }
 
-    const newTodo = {
-      name: todoName,
-      id: Date.now(),
-      complete: false,
-    };
+    dispatch(changeId({ id: Date.now() }));
 
     dispatch(addTodo(newTodo));
     dispatch(changeName({ name: '' }));
+    dispatch(changeId({ id: 0 }));
   };
 
   return (

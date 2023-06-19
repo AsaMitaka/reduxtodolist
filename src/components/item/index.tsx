@@ -2,7 +2,7 @@ import styles from './item.module.scss';
 import { useDispatch } from 'react-redux';
 import { removeTodo, updateTodo, changeComplete } from '../../redux/reducers/todoListSlice.js';
 
-const Item = ({ item: { name, id } }) => {
+const Item = ({ item: { name, id } }): JSX.Element => {
   const dispatch = useDispatch();
 
   const handleCompleted = (id: number) => {

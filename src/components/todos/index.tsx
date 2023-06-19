@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
 import { Item } from '../';
 import styles from './todos.module.scss';
+import { TodoState } from '../../redux/reducers/todoListSlice';
 
-const Todos = () => {
-  const todos = useSelector((state) => {
+const Todos = (): JSX.Element => {
+  const todos = useSelector((state: TodoState) => {
     const { todos, filter } = state.todos;
     if (filter) {
       return todos.filter((todo) => todo.complete === true);

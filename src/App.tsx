@@ -2,7 +2,7 @@ import styles from './App.module.scss';
 
 import { Newtodo, Header, Todos, Footer, Filter } from './components';
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className={styles.wrapper}>
       <Header />
