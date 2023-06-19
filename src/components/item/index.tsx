@@ -1,18 +1,22 @@
 import styles from './item.module.scss';
 import { useDispatch } from 'react-redux';
-import { removeTodo, updateTodo } from '../../redux/reducers/todoListSlice.js';
+import { removeTodo, updateTodo, changeComplete } from '../../redux/reducers/todoListSlice.js';
 
 const Item = ({ item: { name, id } }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = (idx: number) => {
-    dispatch(removeTodo({ idx }));
+  const handleCompleted = (id: number) => {
+    dispatch(changeComplete({ id }));
+  };
+
+  const handleDelete = (id: number) => {
+    dispatch(removeTodo({ id }));
   };
 
   const handleUpdate = (event, id) => {
     const value = event.target.value;
     if (value.length < 1) {
-      dispatch(removeTodo({ idx: id }));
+      dispatch(removeTodo({ id: id }));
     }
 
     dispatch(updateTodo({ name: value, id: id }));
@@ -20,6 +24,7 @@ const Item = ({ item: { name, id } }) => {
 
   return (
     <li className={styles.todo}>
+      <input type="checkbox" onClick={() => handleCompleted(id)} className={styles.todocheckbox} />
       <input
         type="text"
         className={styles.todoinput}

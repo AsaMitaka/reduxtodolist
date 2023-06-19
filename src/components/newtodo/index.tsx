@@ -5,7 +5,6 @@ import { addTodo } from '../../redux/reducers/todoListSlice.js';
 
 const Newtodo = () => {
   const todoName = useSelector((state) => state.todo.name);
-  const newTodo = useSelector((state) => state.todo);
   const dispatch = useDispatch();
 
   const handleNameChange = (event) => {
@@ -17,6 +16,12 @@ const Newtodo = () => {
     if (!todoName) {
       return;
     }
+
+    const newTodo = {
+      name: todoName,
+      id: Date.now(),
+      complete: false,
+    };
 
     dispatch(addTodo(newTodo));
     dispatch(changeName({ name: '' }));
