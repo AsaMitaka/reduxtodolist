@@ -1,5 +1,6 @@
+import styles from './item.module.scss';
 import { useDispatch } from 'react-redux';
-import { removeTodo, updateTodo } from '../redux/reducers/todoListSlice.js';
+import { removeTodo, updateTodo } from '../../redux/reducers/todoListSlice.js';
 
 const Item = ({ item: { name, id } }) => {
   const dispatch = useDispatch();
@@ -18,9 +19,16 @@ const Item = ({ item: { name, id } }) => {
   };
 
   return (
-    <li>
-      <input type="text" value={name} onChange={(event) => handleUpdate(event, id)} />
-      <button onClick={() => handleDelete(id)}>delete</button>
+    <li className={styles.todo}>
+      <input
+        type="text"
+        className={styles.todoinput}
+        value={name}
+        onChange={(event) => handleUpdate(event, id)}
+      />
+      <button className={styles.todobtn} onClick={() => handleDelete(id)}>
+        delete
+      </button>
     </li>
   );
 };

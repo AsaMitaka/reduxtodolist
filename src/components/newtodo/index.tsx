@@ -1,6 +1,7 @@
+import styles from './newtodo.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeName } from '../redux/reducers/todoSlice.js';
-import { addTodo } from '../redux/reducers/todoListSlice.js';
+import { changeName } from '../../redux/reducers/todoSlice.js';
+import { addTodo } from '../../redux/reducers/todoListSlice.js';
 
 const Newtodo = () => {
   const todoName = useSelector((state) => state.todo.name);
@@ -22,18 +23,19 @@ const Newtodo = () => {
   };
 
   return (
-    <section className="newTodo">
-      <label htmlFor="newTodoInput">
+    <section className={styles.newTodo}>
+      <label htmlFor="newTodoInput" className={styles.newTodoLabel}>
         <input
           type="text"
-          className="newTodoInput"
+          className={styles.newTodoInput}
           id="newTodoInput"
           value={todoName}
           onChange={handleNameChange}
           placeholder="new to do"
+          tabIndex="0"
         />
       </label>
-      <button className="newTodoBtn" onClick={handleNewTodo}>
+      <button className={styles.newTodoBtn} onClick={handleNewTodo} tabIndex="0">
         add new to do
       </button>
     </section>
